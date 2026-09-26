@@ -1,0 +1,9 @@
+{
+  "fixture_id": "fixture-energy-test-v1",
+  "status": "COMPUTATION_SUCCESS",
+  "output_tokens": 42,
+  "result_data": {
+    "energy_level": 420,
+    "converged": true
+  }
+}
