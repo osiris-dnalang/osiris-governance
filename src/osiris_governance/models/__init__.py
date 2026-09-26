@@ -1,7 +1,15 @@
 """Data models for OSIRIS Orthogonal State Machine Architecture."""
 
 from .claim import ClaimRecord, EpistemicStatus, ReleaseRelevance
-from .evidence import EvidenceClass, EvidenceDomain, EvidenceRecord
+from .evidence import (
+    CrossPlaneProvenanceRecord,
+    EvidenceClass,
+    EvidenceDomain,
+    EvidenceRecord,
+    HardwareProviderReceipt,
+    RawExperimentalDataReceipt,
+    RuntimeProbeReceipt,
+)
 from .ledger import (
     ClaimStatus,
     ClaimType,
@@ -27,6 +35,10 @@ __all__ = [
     "EvidenceClass",
     "EvidenceDomain",
     "EvidenceRecord",
+    "RuntimeProbeReceipt",
+    "RawExperimentalDataReceipt",
+    "HardwareProviderReceipt",
+    "CrossPlaneProvenanceRecord",
     "VerificationResult",
     "VerificationRecord",
     "DeployedGateStatus",

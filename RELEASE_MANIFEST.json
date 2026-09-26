@@ -2,45 +2,53 @@
   "release_id": "OSIRIS-LIVLM-BETA-0.1.0-REF",
   "version": "0.1.0-beta.1",
   "tag": "v0.1.0-beta.1",
-  "git_commit": "62c3492",
-  "release_timestamp_utc": "2026-09-26T12:00:00Z",
+  "git_commit": "8b3f047",
+  "release_timestamp_utc": "2026-09-26T16:15:00Z",
+  "release_designation": "v0.1.0-beta.1 REFERENCE IMPLEMENTATION (NOT DEPLOYMENT-ATTESTED)",
   "release_disposition": "RELEASE_READY_WITH_EXPLICIT_LIMITATIONS",
+  "local_reference_release_allowed": true,
+  "cloud_deployment_allowed": false,
+  "zenodo_doi": "10.5281/zenodo.22980008",
+  "grant_proposal_doi": "10.5281/zenodo.22863245",
   "target_mission": {
-    "grant_presentation": "Quantum Flywheel Grant / Open Call 2026",
-    "cloud_deployment": "Google Cloud Run / Cloud Build",
+    "grant_presentation": "BlueQubit Quantum Flywheel Open Call 2026 (Track 2: Breaking Quantum Advantage Claims)",
+    "cloud_deployment": "Google Cloud Run / Cloud Build (BLOCKED)",
     "service_name": "livlm-service",
-    "audience": "External Beta Users and Grant Reviewers"
+    "audience": "External Beta Users, Evaluators, and Grant Reviewers"
   },
-  "epistemic_demarcation": {
-    "software_governance_engine": {
-      "status": "TESTED_AND_VERIFIED",
-      "basis": "63 passed automated tests (100% pass rate in 0.18s)",
-      "limitations": "In-memory reference implementation; verified on Linux 6.6 / Python 3.12"
+  "master_status_summary": {
+    "reference_implementation": {
+      "status": "READY_WITH_EXPLICIT_LIMITATIONS",
+      "tests_passed": 65,
+      "tests_failed": 0,
+      "local_reference_release_allowed": true
     },
-    "canonical_serialization": {
-      "status": "VERIFIED_COMPLIANT",
-      "profile": "OSIRIS-CANONICAL-JSON-V1",
-      "limitations": "Strict UTF-8, float forbidden, duplicate key forbidden, Unicode NFC, no bidi"
+    "operational_evidence": {
+      "campaign_id": "REAL-CAMPAIGN-20260926T160434Z",
+      "s_deployed": "FALSE",
+      "root_hash": "sha256:fcb966e6b010c282531a7bc8c962b1154c156f71b9543e09968940e79dc314da",
+      "observed_violations": [
+        "Seccomp mode 0 (filter inactive)",
+        "Unauthorized network egress attempt",
+        "Unconfined /tmp writes"
+      ],
+      "cloud_deployment_status": "BLOCKED",
+      "confirmatory_execution": "PROHIBITED"
     },
-    "google_cloud_deployment": {
-      "status": "UNVERIFIED",
-      "blocker": "BLOCKED_BY_CONSUMER_SUSPENSION",
-      "detail": "Target GCP project cs-project-nfhprhbh is CONSUMER_SUSPENDED; google-mpf-* are BILLING_DISABLED",
-      "artifacts_ready": ["Dockerfile", "cloudbuild.yaml", ".dockerignore"]
+    "scientific_evidence": {
+      "package_id": "SEP-QF-2026-001",
+      "quantum_advantage": "NOT_ESTABLISHED",
+      "hardware_execution": "NOT_ESTABLISHED",
+      "prospective_qpu_work": "CONTINGENT_ON_GRANT_AWARD"
     },
-    "quantum_hardware_execution": {
-      "status": "SIMULATED_ONLY",
-      "basis": "Local deterministic simulation",
-      "limitations": "Does NOT constitute proof of physical QPU quantum speedup or IBM Heron execution"
-    },
-    "scientific_claim_efficacy": {
-      "status": "HYPOTHESIS",
-      "basis": "Preliminary mathematical formulations in flywheel-2026",
-      "limitations": "Requires independent external laboratory empirical replication"
+    "cross_plane_provenance": {
+      "record_id": "XPL-2026-09-26-001",
+      "status": "LINKED_BY_IMMUTABLE_IDENTITY",
+      "substitution_permitted": false
     }
   },
   "governance_invariants_enforced": [
-    "EVIDENCE_NON_SUBSTITUTION_INVARIANT",
+    "CROSS_PLANE_NON_SUBSTITUTION_INVARIANT",
     "ADVERSE_FIRST_PRECEDENCE",
     "EXPLICIT_FOUR_COORDINATE_SCOPE_BINDING",
     "APPEND_ONLY_CRYPTOGRAPHIC_HASH_CHAIN",
@@ -50,48 +58,11 @@
     "TRANSITIVE_CLAIM_LAUNDERING_PROHIBITED",
     "PARTIAL_SCOPE_PROMOTION_REJECTED"
   ],
-  "artifacts": [
-    {
-      "path": "src/osiris_governance/livlm_service.py",
-      "sha256": "c2d61ee200af01a7d56bf22a454aab5159605d86546a66780d511dd53b992a21",
-      "description": "Living Language Model HTTP REST API service with governance integration"
-    },
-    {
-      "path": "Dockerfile",
-      "sha256": "3e7237386afd864e5e63ea937d002951a9beaa70c25368a46058d4c4c27645f5",
-      "description": "Multi-stage unprivileged container specification"
-    },
-    {
-      "path": "cloudbuild.yaml",
-      "sha256": "dd4d7873335d85eac9dc340f67ceec056fbd55baac983d0aa940437ccad97d22",
-      "description": "Google Cloud Build and Cloud Run deployment pipeline"
-    },
-    {
-      "path": "BETA_TEST_REPORT.md",
-      "sha256": "2e3f5df207ef1f736e19448c8624c08ec9bfdc0eff7638de8cf994ad4408387f",
-      "description": "Test verification report for 63 unit and integration tests"
-    },
-    {
-      "path": "RELEASE_AUDIT.md",
-      "sha256": "14c0aeb978f50eb5f71191ce9477debb9f8335b9c81a768fa431fa76973bd1a4",
-      "description": "Comprehensive pre-release audit of repositories, environment, and security"
-    },
-    {
-      "path": "CLOUD_DEPLOYMENT_RECORD.md",
-      "sha256": "1533f6645b7b69ef40073476c1a409ab3c4aa688afd83fe9b9ec6b4c8fa2417f",
-      "description": "Audit record of Google Cloud discovery, project state, and API inspection"
-    },
-    {
-      "path": "pyproject.toml",
-      "sha256": "2284c78455081ba4846a0e14d96784109b027a174ce24ea36a0d449b9ed868eb",
-      "description": "Python project metadata and dependencies"
-    }
-  ],
   "verification_summary": {
-    "total_tests": 63,
-    "passed": 63,
+    "total_tests": 65,
+    "passed": 65,
     "failed": 0,
-    "execution_time_seconds": 0.18,
+    "execution_time_seconds": 0.16,
     "test_runner": "pytest-9.0.2 / Python 3.12.3"
   }
 }

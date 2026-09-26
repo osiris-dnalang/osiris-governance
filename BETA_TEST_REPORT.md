@@ -2,10 +2,10 @@
 
 **Release Identifier:** `OSIRIS-LIVLM-BETA-0.1.0-REF`  
 **Target Release:** `v0.1.0-beta.1`  
-**Git Commit:** `62c3492`  
+**Git Commit:** `8b3f047`  
 **Test Execution Date:** 2026-09-26  
 **Environment:** Linux 6.6.137+ / Python 3.12.3 / pytest-9.0.2  
-**Overall Result:** **ALL 63 TESTS PASSED (100% SUCCESS RATE, 0.18s)**
+**Overall Result:** **ALL 65 TESTS PASSED (100% SUCCESS RATE, 0.16s)**
 
 ---
 
@@ -20,11 +20,12 @@ This test report documents the comprehensive validation of the Living Language M
 | `test_adjudication.py` | Multi-evidence release gate & $S_{\text{deployed}}$ adverse-first precedence | 8 | 8 | 0 | 0.03s |
 | `test_canonical_binding.py` | `OSIRIS-CANONICAL-JSON-V1` RFC compliance, duplicate key, float & bidi rejection | 14 | 14 | 0 | 0.02s |
 | `test_confinement_and_execution.py` | Process isolation, FD leakage detection, network acceptance policy | 7 | 7 | 0 | 0.01s |
+| `test_cross_plane_provenance.py` | Typed evidence planes (`OPERATIONAL`, `SCIENTIFIC`, `PROVENANCE`) & schema validation | 2 | 2 | 0 | 0.02s |
 | `test_dynamic_ledger.py` | Append-only ledger, Evidence Non-Substitution Invariant, mutable ref rejection | 11 | 11 | 0 | 0.03s |
 | `test_livlm_service.py` | HTTP REST API (`/healthz`, `/readyz`, `/v1/intent`, `/v1/replay`, `/v1/ledger`) | 5 | 5 | 0 | 0.55s |
 | `test_replay_governor.py` | 13-point security invariants, pre-adapter boundaries, in-epoch deduplication | 13 | 13 | 0 | 0.03s |
 | `test_scientific_evidence.py` | LPV3 experimental evidence ingestion, cross-plane separation | 5 | 5 | 0 | 0.01s |
-| **TOTAL** | **Full Verification Suite** | **63** | **63** | **0** | **0.18s** |
+| **TOTAL** | **Full Verification Suite** | **65** | **65** | **0** | **0.16s** |
 
 ---
 

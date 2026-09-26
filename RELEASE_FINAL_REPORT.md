@@ -275,33 +275,56 @@ The following items could not be completed without user administrative action ou
 ## 18. Final Release Decision
 
 ```text
-================================================================================
-                         FINAL RELEASE DISPOSITION
-================================================================================
+============================================================
+OSIRIS MASTER STATUS
+============================================================
 
-DISPOSITION: RELEASE_READY_WITH_EXPLICIT_LIMITATIONS
+REFERENCE IMPLEMENTATION
+  Release Designation: v0.1.0-beta.1 REFERENCE IMPLEMENTATION (NOT DEPLOYMENT-ATTESTED)
+  Status: READY_WITH_EXPLICIT_LIMITATIONS
+  Tests: 65 PASS (100% green in 0.16s)
+  LocalReferenceReleaseAllowed: TRUE
 
-RATIONALE:
-1. The OSIRIS Governance Control Plane and Living Language Model Beta Service
-   are 100% verified, fully tested (63/63 passing tests), and packaged into
-   an unprivileged, production-grade container.
-2. Canonical serialization (OSIRIS-CANONICAL-JSON-V1), pre-adapter capability
-   boundaries, and the Evidence Non-Substitution Invariant are mechanically
-   enforced in code.
-3. Live Google Cloud deployment is BLOCKED solely due to external Google Cloud
-   project consumer suspension (cs-project-nfhprhbh: CONSUMER_SUSPENDED).
-4. Physical quantum hardware execution is preserved as SIMULATED / HYPOTHESIS,
-   preventing software test passes from being mislabeled as quantum validation.
-5. All release artifacts, grant proposal documents, customer guides, and
-   cryptographic evidence indices are committed, tagged, and cryptographically
-   sealed in the repository.
+OPERATIONAL EVIDENCE
+  Real Campaign: REAL-CAMPAIGN-20260926T160434Z
+  S_deployed: FALSE
+  Root: sha256:fcb966e6b010c282531a7bc8c962b1154c156f71b9543e09968940e79dc314da
+
+  Observed violations:
+    - Seccomp mode 0 (filter inactive)
+    - Unauthorized network egress attempt
+    - Unconfined /tmp writes
+
+CLOUD DEPLOYMENT
+  Status: BLOCKED
+  CloudDeploymentAllowed: FALSE (BLOCKED)
+
+CONFIRMATORY EXECUTION
+  Status: PROHIBITED
+
+SCIENTIFIC EVIDENCE
+  Status: INDEPENDENT_EVIDENCE_PLANE
+  Quantum advantage: NOT ESTABLISHED
+  Hardware execution: NOT ESTABLISHED
+  Prospective QPU work: CONTINGENT
+
+QUANTUM FLYWHEEL
+  Package: PREPARED (SEP-QF-2026-001)
+  Status: PROPOSAL / RESEARCH PACKAGE
+  Award: NOT CLAIMED
+
+CROSS-PLANE PROVENANCE
+  Status: LINKED_BY_IMMUTABLE_IDENTITY (XPL-2026-09-26-001)
+  Evidence substitution: PROHIBITED (SCIENCE ⊬ DEPLOYMENT; DEPLOYMENT ⊬ SCIENCE)
+============================================================
 
 SIGNED: Antigravity Release Engineering & Governance Verification Agent
 DATE:   2026-09-26
 EPOCH:  livlm-beta-epoch-1
 TAG:    v0.1.0-beta.1
-COMMIT: 1f7c7c7f76830d0e244ae0e45ef73c63dd247d64
-================================================================================
+COMMIT: 8b3f047
+ZENODO: 10.5281/zenodo.22980008
+============================================================
 ```
 
 ---

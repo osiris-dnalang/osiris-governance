@@ -83,3 +83,43 @@ The adaptive synthesizer updates circuit parameters $\vec{\theta}_{k+1}$ by grad
 $$\vec{\theta}_{k+1} = \arg\max_{\vec{\theta}} \, \mathbb{E}\left[ \mathcal{Q}(\mathcal{E}) \mid \mathcal{E}_{1:k} \right]$$
 
 Because every data point in $\mathcal{E}_{1:k}$ is cryptographically tamper-evident, the optimization landscape cannot be poisoned by spoofed runs or phantom executions. This creates an uncompromised, self-improving flywheel.
+
+
+---
+
+## 4. Track 2 Adversarial Grounding & Evidence Separation
+
+In accordance with BlueQubit Track 2 (Breaking Quantum Advantage Claims), the Flywheel does not optimize solely for nominal fidelity; it stress-tests candidate quantum outputs against an escalating classical adversarial ladder:
+
+```text
+Target Quantum Benchmark
+           │
+           ▼
+[Attack Level 0] Exact Small-Instance Statevector Reference (M <= 24)
+           │
+           ▼
+[Attack Level 1] Matrix Product State (MPS) Tensor Network Sweep (chi in [16, 256])
+           │
+           ▼
+[Attack Level 2] Pauli-Path / Clifford+T Hybrid Classical Expansion
+           │
+           ▼
+[Attack Level 3] Heuristic / Evolutionary Classical Search via LivLM
+           │
+           ▼
+     Adjudication
+(Advantage verified ONLY if all 4 classical attacks fail under budget)
+```
+
+### Coverage-Adjusted Entropy Estimator Invariant
+To prevent the recurrence of sampling artifacts where high-shot distributions ($10^6$ shots on 156 qubits) mimic entropy suppression simply because sample coverage $\hat{C} \approx 0$, the Flywheel forbids naive plug-in entropy:
+
+$$\hat{C} = 1 - \frac{f_1}{N}$$
+
+When $\hat{C} < 0.1$, the ledger mandates coverage-adjusted estimators (Miller-Madow, Chao-Shen, NSB) or halts claim evaluation, formally refuting artifactual advantage claims.
+
+### The Three Evidence Planes
+All data produced across flywheel cycles is segregated into three orthogonal, non-substituting planes:
+1. **Operational (OEP):** Confinement, execution nonces, host environment telemetry.
+2. **Scientific (SEP):** Classical attack traces, QPU raw bitstrings, coverage metrics.
+3. **Cross-Plane (XPL):** Strict immutable bindings linking identical software lineages without allowing operational failures to pollute scientific models, or scientific promise to bypass operational release gates.

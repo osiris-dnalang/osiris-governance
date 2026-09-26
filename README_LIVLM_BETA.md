@@ -1,9 +1,14 @@
 # Living Language Model Beta (v0.1.0-beta.1)
 
 **Release ID:** `OSIRIS-LIVLM-BETA-0.1.0-REF`  
-**Git Commit:** `62c3492`  
+**Git Commit:** `8b3f047`  
 **Release Tag:** `v0.1.0-beta.1`  
+**Release Designation:** `v0.1.0-beta.1 REFERENCE IMPLEMENTATION (NOT DEPLOYMENT-ATTESTED)`  
+**Zenodo DOI:** [10.5281/zenodo.22980008](https://doi.org/10.5281/zenodo.22980008)  
+**Grant Proposal DOI:** [10.5281/zenodo.22863245](https://doi.org/10.5281/zenodo.22863245)  
 **Epistemic Disposition:** `RELEASE_READY_WITH_EXPLICIT_LIMITATIONS`  
+**Operational Status:** `S_deployed = FALSE (REAL-CAMPAIGN-20260926T160434Z)`  
+**Cross-Plane Record:** `XPL-2026-09-26-001` (Strict Non-Substitution: `SCIENCE ⊬ DEPLOYMENT`)  
 
 Welcome to the **Living Language Model Beta** developer reference release. This document provides clear, honest answers to the 10 most critical questions about this release, its capabilities, operational boundaries, and verification procedures.
 

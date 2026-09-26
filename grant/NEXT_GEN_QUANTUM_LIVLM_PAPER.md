@@ -301,15 +301,33 @@ In strict conformity with our release governance standard, we publish the true, 
 
 | Domain | Claimed Status | Actual Evaluated Status | Evidentiary Basis |
 |---|---|---|---|
-| **Software Governance Engine** | Verified | **`TESTED_AND_VERIFIED`** | 63/63 passing tests; clean git tag `v0.1.0-beta.1` |
+| **Software Governance Engine** | Verified | **`TESTED_AND_VERIFIED`** | 63/63 passing tests; clean git tag `v0.1.0-beta.1`; `LocalReferenceReleaseAllowed: TRUE` |
 | **Canonical Serialization** | Verified | **`VERIFIED_COMPLIANT`** | 14 RFC test vectors; strict float/duplicate rejection |
-| **Google Cloud Run Deployment** | Verified | **`UNVERIFIED (BLOCKED)`** | Blocked by GCP Project `cs-project-nfhprhbh` (`CONSUMER_SUSPENDED`) |
+| **Operational Confinement Campaign** | Verified | **`FAILED (S_deployed = FALSE)`** | `REAL-CAMPAIGN-20260926T160434Z` (Seccomp mode 0, network egress, /tmp escape) |
+| **Google Cloud Run Deployment** | Verified | **`BLOCKED`** | Blocked by GCP Project `cs-project-nfhprhbh` (`CONSUMER_SUSPENDED`) & `S_deployed = FALSE` |
+| **Confirmatory Execution** | Verified | **`PROHIBITED`** | Automatic fail-closed consequence of `S_deployed = FALSE` |
+| **Cross-Plane Provenance** | Verified | **`LINKED_BY_IMMUTABLE_IDENTITY`** | `XPL-2026-09-26-001` binds artifact to research package without claim substitution |
 | **Physical IBM Heron Execution**| Verified | **`HYPOTHESIS / PLANNED`** | Milestone 2 target under BlueQubit Grant 2026 |
 | **Biological Cognitive Efficacy**| Verified | **`HYPOTHESIS`** | Requires external laboratory wet-lab replication |
 
 *Table 2: Epistemic status matrix for OSIRIS LivLM Beta.*
 
-By explicitly publishing that $S_{\text{deployed}} = \text{UNVERIFIED}$ due to upstream Google Cloud account suspension, we demonstrate that the governance framework functions as intended: **preventing false deployment claims from entering the peer-reviewed record.**
+### 8.1 The Meaning of $S_{\text{deployed}} = \text{FALSE}$
+During the live confinement probe campaign `REAL-CAMPAIGN-20260926T160434Z` (root: `sha256:fcb966e...`), three critical operational violations were observed:
+1. Seccomp mode was 0 (filter inactive);
+2. An unauthorized network egress probe successfully connected to an external target;
+3. An unconfined filesystem write succeeded in `/tmp`.
+
+In conventional software practices, these failures are often concealed or deferred. In OSIRIS:
+- **The failure is frozen permanently** as historical evidence record `OEP-REAL-CAMPAIGN-20260926T160434Z`. It is never mutated or overwritten.
+- **The release gate immediately tripped:** $S_{\text{deployed}} = \text{FALSE}$, setting `CloudDeploymentAllowed = FALSE` and `ConfirmatoryExecution = PROHIBITED`.
+- **The architecture functioned exactly as intended:** the evidence plane stopped an unconfined release.
+
+### 8.2 Cross-Plane Linking Without Claim Laundering
+Through cross-plane provenance package `XPL-2026-09-26-001`, the scientific research package (`SEP-QF-2026-001`) is bound to the exact software lineage (commit `8b3f047`, digest `sha256:8df6...`) that failed the deployment campaign, under the inviolable rule:
+$$\text{SCIENCE} \not\vdash \text{DEPLOYMENT}, \quad \text{DEPLOYMENT} \not\vdash \text{SCIENCE}$$
+
+The scientific algorithms retain their theoretical and simulated validity, while the operational deployment is honestly and visibly reported as halted pending runtime remediation.
 
 ---
 
