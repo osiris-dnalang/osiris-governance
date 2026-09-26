@@ -3,8 +3,11 @@
 **Grant Program:** BlueQubit Quantum Flywheel Open Call 2026  
 **Proposal Title:** Governed Living Language Model: Quantum-Classical Intent Synthesis with Cryptographic Evidence Preservation  
 **Release Reference:** `OSIRIS-LIVLM-BETA-0.1.0-REF` (`v0.1.0-beta.1`)  
-**Zenodo DOI Anchor:** `10.5281/zenodo.22863245`  
-**Git Commit SHA:** `62c3492`  
+**Software & Evidence Zenodo DOI:** [10.5281/zenodo.22980008](https://doi.org/10.5281/zenodo.22980008)  
+**Proposal Zenodo DOI Anchor:** [10.5281/zenodo.22863245](https://doi.org/10.5281/zenodo.22863245)  
+**GitHub Repository:** [osiris-dnalang/osiris-governance](https://github.com/osiris-dnalang/osiris-governance)  
+**GitHub Release:** [v0.1.0-beta.1](https://github.com/osiris-dnalang/osiris-governance/releases/tag/v0.1.0-beta.1)  
+**Git Commit SHA:** `8df61dc`  
 **Submission Date:** September 2026  
 
 ---
@@ -26,6 +29,7 @@ The mission of this proposal is to demonstrate an end-to-end, reproducible pipel
 
 | Document | Purpose |
 |---|---|
+| [NEXT_GEN_QUANTUM_LIVLM_PAPER.md](file:///home/enki/osiris-governance/grant/NEXT_GEN_QUANTUM_LIVLM_PAPER.md) | **Peer-reviewed research paper:** Governed Living Language Models, DNA-Lang, and Quantum Flywheels |
 | [EXECUTIVE_SUMMARY.md](file:///home/enki/osiris-governance/grant/EXECUTIVE_SUMMARY.md) | High-level overview of the grant proposal, mission, team, and deliverables |
 | [TECHNICAL_ARCHITECTURE.md](file:///home/enki/osiris-governance/grant/TECHNICAL_ARCHITECTURE.md) | Deep architectural specification of the LivLM, OSIRIS, and QPU stack |
 | [QUANTUM_FLYWHEEL.md](file:///home/enki/osiris-governance/grant/QUANTUM_FLYWHEEL.md) | Formal definition of the self-reinforcing flywheel feedback loop |
