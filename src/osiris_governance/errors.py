@@ -56,3 +56,28 @@ class NonceReplayDetected(GovernanceViolation):
 class FixtureNotFoundError(GovernanceError):
     """Raised when an in-memory replay fixture lookup fails."""
     pass
+
+
+class SubstitutionViolationError(GovernanceViolation):
+    """Raised when evidence from an invalid domain is substituted (e.g., E_FIXTURE for E_DEPLOYED)."""
+    pass
+
+
+class AdjudicationError(GovernanceViolation):
+    """Raised when adjudication logic or state transitions are violated."""
+    pass
+
+
+class ConfinementViolationError(GovernanceViolation):
+    """Raised when runtime boundary or sandbox confinement criteria are breached."""
+    pass
+
+
+class AuthorityGateError(GovernanceViolation):
+    """Raised when execution is attempted without valid release prerequisites or permit."""
+    pass
+
+
+class MutableReferenceError(GovernanceViolation):
+    """Raised when a mutable reference (e.g. git branch, tag, latest) is used instead of an immutable content digest."""
+    pass

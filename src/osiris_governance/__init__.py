@@ -4,6 +4,14 @@ from .canonical import (
     CANONICALIZATION_VERSION,
     canonical_sha256,
     canonicalize_json,
+    enforce_unicode_policy,
+    normalize_and_canonicalize,
+    strict_parse_json,
+)
+from .scientific_evidence import (
+    ScientificEvidencePackResult,
+    ScientificEvidenceStatus,
+    ingest_lpv3_validation_report,
 )
 from .contracts import (
     DEFAULT_ISSUER,
@@ -15,9 +23,33 @@ from .contracts import (
     ReplayExecutionPermit,
     ReplayResultRecord,
 )
+from .adjudicator import (
+    ConfinementProbeResult,
+    evaluate_release_gate,
+    evaluate_s_deployed,
+)
+from .attestation import (
+    AttestationLevel,
+    S1ArtifactIdentity,
+    S2RuntimeIdentity,
+    S3IsolationObservations,
+    S4ExecutionTrace,
+    S5EvidenceIntegrity,
+    SandboxAttestationRecord,
+)
+from .confinement import (
+    AllowedDescriptor,
+    DescriptorManifest,
+    LeastPrivilegeProfile,
+    NetworkAcceptancePolicy,
+    Openat2ResolutionPolicy,
+)
 from .errors import (
     ActionNotPermitted,
+    AdjudicationError,
+    AuthorityGateError,
     CapabilityNotPermitted,
+    ConfinementViolationError,
     EpochMismatch,
     ExecutionBindingMismatch,
     FixtureNotFoundError,
@@ -27,16 +59,47 @@ from .errors import (
     ProposalExpired,
     SchemaValidationError,
     ScopeViolation,
+    SubstitutionViolationError,
 )
+from .execution_gate import ExecutionContract, ExecutionGate
 from .governor import CapabilityGovernor
+from .models import (
+    AuthorizationState,
+    ClaimRecord,
+    DeployedGateStatus,
+    EpistemicStatus,
+    EvidenceClass,
+    EvidenceDomain,
+    EvidenceRecord,
+    ExecutionMode,
+    ReleaseDecisionBasis,
+    ReleaseRelevance,
+    VerificationRecord,
+    VerificationResult,
+    ClaimStatus,
+    ClaimType,
+    EvidencePlane,
+    LedgerEvent,
+    LedgerEventType,
+    ScopeBinding,
+    ViolationType,
+    resolve_status_precedence,
+)
+from .ledger import ClaimEvaluationResult, DynamicEvidenceLedger
 from .replay import ReplayAdapter
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "CANONICALIZATION_VERSION",
     "canonical_sha256",
     "canonicalize_json",
+    "strict_parse_json",
+    "enforce_unicode_policy",
+    "normalize_and_canonicalize",
+    "ScientificEvidenceStatus",
+    "ScientificEvidencePackResult",
+    "ingest_lpv3_validation_report",
     "DEFAULT_ISSUER",
     "DEFAULT_POLICY_VERSION",
     "REPLAY_ACTION_KIND",
@@ -58,4 +121,47 @@ __all__ = [
     "EpochMismatch",
     "NonceReplayDetected",
     "FixtureNotFoundError",
+    "SubstitutionViolationError",
+    "AdjudicationError",
+    "ConfinementViolationError",
+    "AuthorityGateError",
+    "EpistemicStatus",
+    "ReleaseRelevance",
+    "ClaimRecord",
+    "EvidenceClass",
+    "EvidenceDomain",
+    "EvidenceRecord",
+    "VerificationResult",
+    "VerificationRecord",
+    "DeployedGateStatus",
+    "AuthorizationState",
+    "ExecutionMode",
+    "ReleaseDecisionBasis",
+    "evaluate_s_deployed",
+    "evaluate_release_gate",
+    "ConfinementProbeResult",
+    "AllowedDescriptor",
+    "DescriptorManifest",
+    "LeastPrivilegeProfile",
+    "Openat2ResolutionPolicy",
+    "NetworkAcceptancePolicy",
+    "ExecutionContract",
+    "ExecutionGate",
+    "AttestationLevel",
+    "S1ArtifactIdentity",
+    "S2RuntimeIdentity",
+    "S3IsolationObservations",
+    "S4ExecutionTrace",
+    "S5EvidenceIntegrity",
+    "SandboxAttestationRecord",
+    "DynamicEvidenceLedger",
+    "ClaimEvaluationResult",
+    "EvidencePlane",
+    "ClaimType",
+    "LedgerEventType",
+    "ViolationType",
+    "ClaimStatus",
+    "resolve_status_precedence",
+    "ScopeBinding",
+    "LedgerEvent",
 ]

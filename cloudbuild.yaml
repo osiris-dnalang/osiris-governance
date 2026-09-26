@@ -1,0 +1,68 @@
+# Google Cloud Build configuration for Living Language Model Beta Service
+# Release ID: OSIRIS-LIVLM-BETA-0.1.0-REF
+# Service Name: livlm-service
+
+steps:
+  # 1. Build immutable container image tagged with short SHA and release version
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-container'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${SHORT_SHA}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${_RELEASE_TAG}'
+      - '.'
+
+  # 2. Push image to Google Cloud Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-image'
+    args:
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
+
+  # 3. Deploy to Google Cloud Run with strict resource limits and non-root execution
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-cloud-run'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_SERVICE_NAME}'
+      - '--image'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${SHORT_SHA}'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--memory'
+      - '512Mi'
+      - '--cpu'
+      - '1'
+      - '--timeout'
+      - '60s'
+      - '--concurrency'
+      - '80'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '5'
+      - '--set-env-vars'
+      - 'RELEASE_VERSION=${_RELEASE_TAG},RELEASE_ID=OSIRIS-LIVLM-BETA-0.1.0-REF,EPISTEMIC_STATUS=BETA_DEPLOYED'
+      - '--port'
+      - '8080'
+      - '--allow-unauthenticated'
+
+substitutions:
+  _REGION: 'us-central1'
+  _REPO_NAME: 'osiris-livlm'
+  _SERVICE_NAME: 'livlm-service'
+  _RELEASE_TAG: 'v0.1.0-beta.1'
+
+images:
+  - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${SHORT_SHA}'
+  - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${_RELEASE_TAG}'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

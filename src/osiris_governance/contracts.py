@@ -59,6 +59,23 @@ class ReplayExecutionPermit:
     issuer: str = DEFAULT_ISSUER
 
 
+def require_replay_only_permit(permit: ReplayExecutionPermit) -> None:
+    """Mechanically asserts that a permit carries strictly the replay-only scope."""
+    if permit.scope != REPLAY_SCOPE:
+        from .errors import ScopeViolation
+        raise ScopeViolation(
+            f"Permit scope '{permit.scope}' is unauthorized (must be '{REPLAY_SCOPE}')"
+        )
+
+
+def prohibit_external_execution_from_replay_permit(permit: ReplayExecutionPermit) -> None:
+    """Prohibits any external execution, cloud dispatch, or mutation from a replay permit."""
+    from .errors import ScopeViolation
+    raise ScopeViolation(
+        "Replay permits cannot authorize external execution, subprocesses, network, or cloud dispatch"
+    )
+
+
 @dataclass(frozen=True)
 class ReplayResultRecord:
     """Normalized immutable record of an authorized replay execution."""
@@ -69,3 +86,4 @@ class ReplayResultRecord:
     process_epoch_id: str
     payload: Mapping[str, Any]
     executed_at_utc: str
+    raw_payload_sha256: str = ""

@@ -7,7 +7,12 @@ import json
 from typing import Any
 import uuid
 
-from .canonical import CANONICALIZATION_VERSION, _validate_types_recursive, canonical_sha256
+from .canonical import (
+    CANONICALIZATION_VERSION,
+    _validate_types_recursive,
+    canonical_sha256,
+    canonicalize_json,
+)
 from .contracts import (
     DEFAULT_ISSUER,
     DEFAULT_POLICY_VERSION,
@@ -17,6 +22,7 @@ from .contracts import (
     ActionProposal,
     ReplayExecutionPermit,
     ReplayResultRecord,
+    require_replay_only_permit,
 )
 from .errors import (
     ActionNotPermitted,
