@@ -17,7 +17,14 @@ src/osiris_governance/
 ├── __init__.py
 ├── contracts.py       # ActionProposal, ReplayExecutionPermit, Enums
 ├── canonical.py       # OSIRIS-CANONICAL-JSON-V1 serialization & hashing (strict RFC 8785 subset)
+├── closure.py         # Claim closure schema, policy v1, signed payload
+├── closure_verify.py  # Closure signing and stage-B verification (pure)
+├── signing.py         # Ed25519 over canonical bytes (optional `cryptography`)
 ├── governor.py        # Deterministic CapabilityGovernor & Policy
 ├── replay.py          # Pure in-memory ReplayAdapter (Zero filesystem)
 └── errors.py          # Typed GovernanceViolation hierarchy
 ```
+
+## Documentation
+
+- [`OSIRIS_CLAIM_CLOSURE.md`](docs/OSIRIS_CLAIM_CLOSURE.md): Signed claim closure records: pack layout, two-stage verification, policy v1, and what verification does not establish. CLI: `scripts/closure_pack.py`.
